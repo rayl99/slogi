@@ -1,1 +1,1 @@
-# ds_queue
+# Queue Data Structure: Types, Implementation, Applications
