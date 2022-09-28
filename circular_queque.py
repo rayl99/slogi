@@ -40,7 +40,7 @@ class CircularQueue():
 
     def is_empty(self) -> bool:
         """Check if the queue is empty."""
-        return self.__rear == -1
+        return not self.size()
 
     def size(self) -> int:
         """Get size of the queue"""
