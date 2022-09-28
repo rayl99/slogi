@@ -1,1 +1,1 @@
-Queue Data Structure: Types, Implementation, Applications
+Queue Data Structure: Types and Implementation
