@@ -7,11 +7,11 @@ class Queue():
     
     def get_front(self):
         """Get data at front of the queue."""
-        return self._queue[0]
+        return None if self.is_empty() else self._queue[0]
 
     def get_rear(self):
         """Get data at the end of the queue."""
-        return self._queue[self.size()-1]
+        return None if self.is_empty() else self._queue[self.size()-1]
 
     def enqueue(self, data: any):
         """Put new data at the end of the queue."""
@@ -21,7 +21,7 @@ class Queue():
         """Get and remove data at the front of the queue."""
         if self.is_empty():
             return None
-        return self._queue.pop()
+        return self._queue.pop(0)
 
     def clear(self):
         """Resetting the queue become an empty queue."""
