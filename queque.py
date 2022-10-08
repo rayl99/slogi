@@ -1,6 +1,5 @@
 '''Design simple Queue.'''
 
-
 class Queue():
     def __init__(self) -> None:
         self._queue = []
