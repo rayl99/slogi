@@ -1,6 +1,5 @@
 '''Design simple Circular Queue.'''
-from queque import Queue
-
+from queue_collection.queue import Queue
 
 class CircularQueue(Queue):
     def __init__(self, capacity=10):

@@ -1,5 +1,5 @@
 '''Design simple Priority Queue.'''
-from queque import Queue
+from queue_collection.queue import Queue
 from operator import lt, gt
 
 class PriorityQueue(Queue):

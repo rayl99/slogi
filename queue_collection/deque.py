@@ -1,5 +1,5 @@
 '''Design simple Deque.'''
-from queque import Queue
+from queue_collection.queue import Queue
 
 class Deque(Queue):
     def __init__(self) -> None:
@@ -13,8 +13,8 @@ class Deque(Queue):
     
     def popRear(self):
         if self.is_empty():
-            return None
+            return None 
         return self._queue.pop()
     
     def popFront(self):
-        super().dequeue()
+        return super().dequeue()
