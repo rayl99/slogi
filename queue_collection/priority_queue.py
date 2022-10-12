@@ -1,4 +1,5 @@
 '''Design simple Priority Queue.'''
+from select import select
 from queue_collection.queue import Queue
 from operator import lt, gt
 

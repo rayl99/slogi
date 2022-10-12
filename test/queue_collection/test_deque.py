@@ -1,4 +1,4 @@
-"""Test the methods of Queue class."""
+"""Test the methods of Deque class."""
 
 import pytest
 from queue_collection import Deque
@@ -16,16 +16,16 @@ def test_add_data_to_deque(generate_data, deque):
     assert deque.is_empty()
     # Act
     # addRear
-    for r in data[:5]:
+    for r in data[:n-2]:
         deque.addRear(r)
     # addFront
-    for f in data[5:]:
+    for f in data[n-2:]:
         deque.addFront(f)
     # Assert
     assert deque.get_front() == data[n - 1]
-    assert deque.get_rear() == data[4]
+    assert deque.get_rear() == data[n - 3]
     assert deque.size() == n
-    assert str(deque) == str(data[5:] + data[:5]) 
+    assert str(deque) == str(data[n-2:][::-1] + data[:n-2])
 
 
 
