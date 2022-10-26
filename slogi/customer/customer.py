@@ -72,24 +72,26 @@ class Guest(Customer):
 class Member(Customer):
     def __init__(self, id: str, name: str, address: Location, email: str, phone_number: str, point: int = 0, grade: str = Grade.POTENTIAL) -> None:
         super().__init__(id, name, address, email, phone_number)
-        self._point = point
-        self._grade = grade
+        self.__point = point
+        self.__grade = grade
     
     @property
     def point(self):
-        return self._point
+        return self.__point
     
     @point.setter
     def point(self, value: int):
-        self._point = value
+        if value < 0:
+            raise Exception("Value can not less than zero.")
+        self.__point = value
 
     @property
     def grade(self):
-        return self._point
+        return self.__grade
     
     @grade.setter
     def grade(self, value: str):
-        self._grade = Grade.dict.get(value, Grade.POTENTIAL)
+        self.__grade = Grade.dict.get(value.upper(), Grade.POTENTIAL)
 
     def shipment(self):
         # TODO

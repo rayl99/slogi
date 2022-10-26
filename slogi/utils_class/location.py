@@ -5,30 +5,36 @@ from typing import Optional
 
 class Location:
     def __init__(self, street: str, ward: str, district: str, city: str, zipcode: int, detail: Optional[str]="") -> None:
-        self.street = street
-        self.ward = ward
-        self.district = district
-        self.city = city
-        self.zipcode = zipcode
-        self.detail = detail
+        self.__street = street
+        self.__ward = ward
+        self.__district = district
+        self.__city = city
+        self.__zipcode = zipcode
+        self.__detail = detail
 
-    def get_street(self):
-        return self.street
-    
-    def get_ward(self):
-        return self.ward
+    @property
+    def street(self):
+        return self.__street
 
-    def get_district(self):
-        return self.ward
+    @property
+    def ward(self):
+        return self.__ward
 
-    def get_city(self):
-        return self.city
+    @property
+    def district(self):
+        return self.__district
 
-    def get_zipcode(self):
-        return self.zipcode
+    @property
+    def city(self):
+        return self.__city
 
-    def get_detail(self):
-        return self.detail if self.detail else self.__str__()
+    @property
+    def zipcode(self):
+        return self.__zipcode
+
+    @property
+    def detail(self):
+        return self.__detail if self.__detail else self.__str__()
 
     def __str__(self) -> str:
         return ','.join(list(self.__dict__.values()))
