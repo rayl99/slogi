@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
-from email.policy import default
+from slogi.constants import Grade
+from slogi.exceptions.errors import AttributeError
 from slogi.utils_class import Location
-from slogi.constant import Grade
 
 class Customer(ABC):
     def __init__(self, id: str, name: str, address: Location, email: str, phone_number: str) -> None:
@@ -20,32 +20,32 @@ class Customer(ABC):
         return self._name
     
     @name.setter
-    def name(self, value: str):
-        self._name = value
+    def name(self, data: str):
+        self._name = data
     
     @property
     def address(self):
         return self._address
     
     @address.setter
-    def address(self, value: Location):
-        self._address = value
+    def address(self, data: Location):
+        self._address = data
 
     @property
     def email(self):
         return self._email
     
     @email.setter
-    def email(self, value: str):
-        self._email = value
+    def email(self, data: str):
+        self._email = data
 
     @property
     def phone_number(self):
         return self._email
     
     @phone_number.setter
-    def phone_number(self, value: str):
-        self._email = value
+    def phone_number(self, data: str):
+        self._email = data
 
     @abstractmethod
     def shipment(self):
@@ -80,18 +80,20 @@ class Member(Customer):
         return self.__point
     
     @point.setter
-    def point(self, value: int):
-        if value < 0:
-            raise Exception("Value can not less than zero.")
-        self.__point = value
+    def point(self, data: int):
+        if data < 0:
+            raise AttributeError("The data can not less than zero.", {'name':'point', 'data':data})
+        self.__point = data
 
     @property
     def grade(self):
         return self.__grade
     
     @grade.setter
-    def grade(self, value: str):
-        self.__grade = Grade.dict.get(value.upper(), Grade.POTENTIAL)
+    def grade(self, data: str):
+        if data.upper() not in Grade.dict:
+            raise AttributeError("The data invalid.", {'name':'grade', 'data': data})
+        self.__grade = Grade.dict[data.upper()]
 
     def shipment(self):
         # TODO
